@@ -45,11 +45,11 @@
     padding: 0;
   }
   
-  body {
+body {
     font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
     background-color: var(--bg);
     color: var(--text);
-    padding-top: 1.5rem;
+    padding-top: 5rem;
     padding-left: 2rem;
     padding-right: 2rem;
   }
@@ -58,12 +58,26 @@
    STRUCTURE: HEADER
 =================== */
 .top-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 3rem;
-    flex-wrap: wrap;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.6);
+  z-index: 1000;
+  padding: 1rem 2rem;
+  box-sizing: border-box;
+}
+
+body.dark .top-bar {
+  background: rgba(50, 50, 50, 0.6);
+  backdrop-filter: blur(10px);
+}
   
   .top-bar .left h1 {
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
