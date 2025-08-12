@@ -8,6 +8,7 @@
   --card-text-muted: #666;
   --nav-bg: #ffffff;
   --nav-border: #ccc;
+  --nav-border-rgb: 204, 204, 204;
   --nav-link: #333;
   --nav-hover: #f0f0f0;
   --nav-active-bg: #5e5e5e;
@@ -23,6 +24,7 @@ body.dark {
   --card-text-muted: #aaa;
   --nav-bg: #222;
   --nav-border: #444;
+  --nav-border-rgb: 68, 68, 68;
   --nav-link: #ccc;
   --nav-hover: #333;
   --nav-active-bg: #f1f1f1;
@@ -62,14 +64,14 @@ body {
   left: 0;
   width: 100%;
   backdrop-filter: blur(10px);
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.4);
   z-index: 1000;
   padding: 1rem 2rem;
   box-sizing: border-box;
 }
 
 body.dark .top-bar {
-  background: rgba(50, 50, 50, 0.6);
+  background: rgba(50, 50, 50, 0.4);
   backdrop-filter: blur(10px);
 }
 
@@ -136,18 +138,21 @@ body.dark .top-bar {
   /* background-image: url('assets/decorative/bg.png'); */
   background-size: cover;
   background-position: center;
-  border: 1px solid var(--nav-border);
-  border-radius: 999px;
+  border: 1px solid rgba(var(--nav-border-rgb), 0.2);
+  border-radius: 10px;
   padding: 0 1rem;
   box-shadow: 0 2px 6px var(--shadow);
   font-family: var(--nav-font);
 }
 
+  /* ===================
+     NAVIGATION LINKS
+  =================== */
 .nav-menu a {
   text-decoration: none;
   color: var(--nav-link);
-  padding: 1rem 1rem;
-  border-radius: 999px;
+  padding: 0.8rem 0.8rem;
+  border-radius: 10px;
   font-weight: 400;
   font-size: 0.9rem;
   transition: background 0.2s;

@@ -14,6 +14,7 @@
     --card-text-muted: #3a3a3a;
     --nav-bg: #ffffff;
     --nav-border: #ccc;
+    --nav-border-rgb: 204, 204, 204;
     --nav-link: #333;
     --nav-hover: #f0f0f0;
     --nav-active-bg: #5e5e5e;
@@ -29,6 +30,7 @@
     --card-text-muted: #aaa;
     --nav-bg: #222;
     --nav-border: #444;
+    --nav-border-rgb: 68, 68, 68;
     --nav-link: #ccc;
     --nav-hover: #333;
     --nav-active-bg: #f1f1f1;
@@ -68,14 +70,14 @@ body {
   left: 0;
   width: 100%;
   backdrop-filter: blur(10px);
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.4);
   z-index: 1000;
   padding: 1rem 2rem;
   box-sizing: border-box;
 }
 
 body.dark .top-bar {
-  background: rgba(50, 50, 50, 0.6);
+  background: rgba(50, 50, 50, 0.4);
   backdrop-filter: blur(10px);
 }
   
@@ -142,8 +144,8 @@ body.dark .top-bar {
     /* background-image: url('assets/decorative/bg.png'); */
     background-size: cover;
     background-position: center;
-    border: 1px solid var(--nav-border);
-    border-radius: 999px;
+    border: 1px solid rgba(var(--nav-border-rgb), 0.2);
+    border-radius: 10px;
     padding: 0 1rem;
     box-shadow: 0 2px 6px var(--shadow);
     font-family: var(--nav-font);
@@ -155,8 +157,8 @@ body.dark .top-bar {
   .nav-menu a {
     text-decoration: none;
     color: var(--nav-link);
-    padding: 1rem 1rem;
-    border-radius: 999px;
+    padding: 0.8rem 0.8rem;
+    border-radius: 10px;
     font-weight: 400;
     font-size: 0.9rem;
     transition: background 0.2s;
@@ -203,55 +205,47 @@ body.dark .top-bar {
   /* ===================
      COMPONENT: PROJECT GRID
   =================== */
-  .project-grid {
+  .poster-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
+    padding: 3rem 2rem;
+    padding-top: 6rem;
   }
   
-  /* ===================
-     PROJECT CARD
-  =================== */
-  .project-card {
-    background: var(--card-bg);
-    border-radius: 1rem;
-    box-shadow: 0 4px 12px var(--shadow);
+  .poster {
     overflow: hidden;
-    transition: transform 0.2s ease;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    aspect-ratio: 5 / 7;
   }
   
-  .project-card:hover {
-    transform: translateY(-4px);
-  }
-  
-  .project-card img {
+.poster img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
     display: block;
+}
+  
+.poster-grid-title h2 {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 18rem;
+  font-weight: 100;
+  font-style: italic; 
+  opacity: 0.1;
+}
+
+  /* 高低错开的效果 */
+  
+  /* 响应式：小屏时改为两列或一列 */
+  @media (max-width: 900px) {
+    .poster-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
   
-  .project-card h2,
-  .project-card p {
-    margin-left: 1rem;
-    margin-right: 1rem;
-  }
-  
-  .project-card h2 {
-    font-size: 1.2rem;
-    margin-top: 1rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .project-card p {
-    font-size: 0.95rem;
-    color: var(--card-text-muted);
-    margin-top: 0;
-    margin-bottom: 1rem;
-  }
-  
-  /* ===================
-     UTILITY CLASSES
-  =================== */
-  .hover-bg:hover {
-    background: var(--nav-hover);
+  @media (max-width: 600px) {
+    .poster-grid {
+      grid-template-columns: 1fr;
+    }
   }
