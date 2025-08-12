@@ -1,9 +1,3 @@
-/* ==================================================
-   PLAYGROUND STYLESHEET
-   Description: Theme variables, navigation styles,
-   layout for header and project showcase
-=================================================== */
-
 /* ===================
    THEME VARIABLES
 =================== */
@@ -38,6 +32,15 @@
     --shadow: rgba(255, 255, 255, 0.05);
   }
   
+  /* 统一去掉页面所有普通链接的下划线 */
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+  color: var(--nav-link); /* 可按需设置颜色，让它和导航文字一致 */
+}
+
   /* ===================
      BASE RESET
   =================== */
@@ -56,9 +59,11 @@ body {
     padding-right: 2rem;
   }
   
- /* ===================
-   STRUCTURE: HEADER
+/* ===================
+   LAYOUT & STRUCTURE
 =================== */
+
+/* -------- Header / Top-bar -------- */
 .top-bar {
   display: flex;
   justify-content: space-between;
@@ -74,159 +79,153 @@ body {
   z-index: 1000;
   padding: 1rem 2rem;
   box-sizing: border-box;
+  transition: transform 0.3s ease;
 }
 
 body.dark .top-bar {
   background: rgba(50, 50, 50, 0.4);
   backdrop-filter: blur(10px);
 }
-  
-  .top-bar .left h1 {
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
-  
-  .top-bar .center {
-    font-size: 0.8rem;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    display: flex;
-    gap: 12rem;
-    align-items: center;
-  }
-  
-  .top-bar .right .nav-container {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  
-  /* ===================
-     TAB NAVIGATION
-  =================== */
-  .nav-tabs {
-    position: relative;
-    display: flex;
-    border-bottom: 2px solid #ccc;
-  }
-  
-  .nav-link {
-    flex: 1;
-    text-align: center;
-    padding: 12px 0;
-    text-decoration: none;
-    color: inherit;
-    position: relative;
-    z-index: 1;
-  }
-  
-  .nav-slider {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 50%; /* 2 tabs: 50% width */
-    height: 2px;
-    background-color: #000;
-    transition: transform 0.3s ease;
-    z-index: 0;
-  }
-  
-  .nav-link.active {
-    font-weight: bold;
-  }
-  
-  /* ===================
-     NAVIGATION MENU
-  =================== */
-  .nav-menu {
-    display: flex;
-    gap: 1.5rem;
-    /* background-image: url('assets/decorative/bg.png'); */
-    background-size: cover;
-    background-position: center;
-    border: 1px solid rgba(var(--nav-border-rgb), 0.2);
-    border-radius: 10px;
-    padding: 0 1rem;
-    box-shadow: 0 2px 6px var(--shadow);
-    font-family: var(--nav-font);
-  }
-  
-  /* ===================
-     NAVIGATION LINKS
-  =================== */
-  .nav-menu a {
-    text-decoration: none;
-    color: var(--nav-link);
-    padding: 0.8rem 0.8rem;
-    border-radius: 10px;
-    font-weight: 400;
-    font-size: 0.9rem;
-    transition: background 0.2s;
-  }
-  
-  .nav-menu a:hover {
-    background: var(--nav-hover);
-  }
-  
-  .nav-menu .active {
-    background: #fff;
-    color: #000;
-    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.15);
-  }
-  
-  /* ===================
-     COMPONENT: THEME TOGGLE BUTTON
-  =================== */
-  #themeToggle {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.2rem; /* 减少内边距 */
-    border-radius: 50%;
-    display: flex;
-    align-items: center; /* 垂直居中 */
-    justify-content: center; /* 水平居中 */
-    height: 2.5rem; /* 与导航菜单高度一致 */
-    width: 2.5rem; /* 保持按钮为正方形 */
-    transition: background 0.2s, transform 0.2s;
-  }
-  
-  #themeToggle:hover {
-    background: var(--nav-hover);
-    transform: scale(1.1);
-  }
-  
-  #themeToggle img {
-    width: 1.5rem; /* 图标宽度 */
-    height: 1.5rem; /* 图标高度 */
-    display: block;
-  }
-  
-  /* ===================
-     COMPONENT: PROJECT GRID
-  =================== */
-  .poster-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    padding: 3rem 2rem;
-    padding-top: 6rem;
-  }
-  
-  .poster {
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    aspect-ratio: 5 / 7;
-  }
-  
-.poster img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+
+.top-bar .left h1 {
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
-  
+
+.top-bar .center {
+  font-size: 0.8rem;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  display: flex;
+  gap: 12rem;
+  align-items: center;
+}
+
+.top-bar .right .nav-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* -------- Navigation Tabs -------- */
+.nav-tabs {
+  position: relative;
+  display: flex;
+  border-bottom: 2px solid #ccc;
+}
+
+.nav-link {
+  flex: 1;
+  text-align: center;
+  padding: 12px 0;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  z-index: 1;
+}
+
+.nav-slider {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50%; /* 2 tabs: 50% width */
+  height: 2px;
+  background-color: #000;
+  transition: transform 0.3s ease;
+  z-index: 0;
+}
+
+.nav-link.active {
+  font-weight: bold;
+}
+
+/* -------- Navigation Menu & Links -------- */
+.nav-menu {
+  display: flex;
+  gap: 1.5rem;
+  /* background-image: url('assets/decorative/bg.png'); */
+  background-size: cover;
+  background-position: center;
+  border: 1px solid rgba(var(--nav-border-rgb), 0.2);
+  border-radius: 10px;
+  padding: 0 1rem;
+  box-shadow: 0 2px 6px var(--shadow);
+  font-family: var(--nav-font);
+}
+
+.nav-menu a {
+  text-decoration: none;
+  color: var(--nav-link);
+  padding: 0.8rem 0.8rem;
+  border-radius: 10px;
+  font-weight: 400;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+
+.nav-menu a:hover {
+  background: var(--nav-hover);
+}
+
+.nav-menu .active {
+  background: #fff;
+  color: #000;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* =================== 
+   COMPONENTS 
+=================== */
+
+/* -------- Theme Toggle Button -------- */
+#themeToggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.2rem; /* 减少内边距 */
+  border-radius: 50%;
+  display: flex;
+  align-items: center; /* 垂直居中 */
+  justify-content: center; /* 水平居中 */
+  height: 2.5rem; /* 与导航菜单高度一致 */
+  width: 2.5rem; /* 保持按钮为正方形 */
+  transition: background 0.2s, transform 0.2s;
+}
+
+#themeToggle:hover {
+  background: var(--nav-hover);
+  transform: scale(1.1);
+}
+
+#themeToggle img {
+  width: 1.5rem; /* 图标宽度 */
+  height: 1.5rem; /* 图标高度 */
+  display: block;
+}
+
+/* -------- Project Grid -------- */
+.poster-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  padding: 3rem 2rem;
+  padding-top: 6rem;
+}
+
+.poster {
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  aspect-ratio: 5 / 7;
+}
+
+.poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .poster-grid-title h2 {
   font-family: 'Times New Roman', Times, serif;
   font-size: 18rem;
@@ -235,17 +234,29 @@ body.dark .top-bar {
   opacity: 0.1;
 }
 
-  /* 高低错开的效果 */
-  
-  /* 响应式：小屏时改为两列或一列 */
-  @media (max-width: 900px) {
-    .poster-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
+/* =================== STATES =================== */
+.top-bar.hidden {
+  transform: translateY(-100%);
+}
+
+.top-bar.visible {
+  transform: translateY(0);
+}
+
+/* =================== 
+   RESPONSIVE 
+=================== */
+/* 高低错开的效果 */
+
+/* 响应式：小屏时改为两列或一列 */
+@media (max-width: 900px) {
+  .poster-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
-  
-  @media (max-width: 600px) {
-    .poster-grid {
-      grid-template-columns: 1fr;
-    }
+}
+
+@media (max-width: 600px) {
+  .poster-grid {
+    grid-template-columns: 1fr;
   }
+}

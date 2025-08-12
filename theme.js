@@ -2,32 +2,49 @@ document.addEventListener("DOMContentLoaded", () => {
   const themeToggle = document.getElementById("themeToggle");
   const themeIcon = document.getElementById("themeIcon");
 
-  // 检查当前模式
+  // Check current mode
   const isDarkMode = () => document.body.classList.contains("dark");
 
-  // 更新图标
+  // Update icon
   const updateIcon = () => {
     if (isDarkMode()) {
-      themeIcon.src = "assets/icons/moon-icon.png"; // 暗模式图标
+      themeIcon.src = "assets/icons/moon-icon.png"; // Dark mode icon
       themeIcon.alt = "Moon Icon";
     } else {
-      themeIcon.src = "assets/icons/sun-icon.png"; // 亮模式图标
+      themeIcon.src = "assets/icons/sun-icon.png"; // Light mode icon
       themeIcon.alt = "Sun Icon";
     }
   };
 
-  // 切换模式
+  // Toggle mode
   themeToggle.addEventListener("click", () => {
     document.body.classList.toggle("dark");
-    // 保存当前模式到 localStorage
+    // Save current theme to localStorage
     localStorage.setItem("theme", isDarkMode() ? "dark" : "light");
     updateIcon();
   });
 
-  // 初始化模式
+  // Initialize mode
   const savedTheme = localStorage.getItem("theme");
   if (savedTheme === "dark") {
     document.body.classList.add("dark");
   }
   updateIcon();
+
+  // Scroll event to hide/show the top bar
+  const topBar = document.querySelector('.top-bar');
+  let lastScrollY = window.scrollY;
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > lastScrollY) {
+      // Scrolling down -> hide
+      topBar.classList.add('hidden');
+      topBar.classList.remove('visible');
+    } else {
+      // Scrolling up -> show
+      topBar.classList.add('visible');
+      topBar.classList.remove('hidden');
+    }
+    lastScrollY = window.scrollY;
+  });
 });
