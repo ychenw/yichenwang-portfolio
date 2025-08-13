@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const themeToggle = document.getElementById("themeToggle");
   const themeIcon = document.getElementById("themeIcon");
+  const layoutToggleIcon = document.getElementById("layoutToggleIcon");
 
   // Check current mode
   const isDarkMode = () => document.body.classList.contains("dark");
@@ -10,9 +11,15 @@ document.addEventListener("DOMContentLoaded", () => {
     if (isDarkMode()) {
       themeIcon.src = "assets/icons/moon-icon.png"; // Dark mode icon
       themeIcon.alt = "Moon Icon";
+      if (layoutToggleIcon) {
+        layoutToggleIcon.src = "assets/icons/layout-dark.png";
+      }
     } else {
       themeIcon.src = "assets/icons/sun-icon.png"; // Light mode icon
       themeIcon.alt = "Sun Icon";
+      if (layoutToggleIcon) {
+        layoutToggleIcon.src = "assets/icons/layout-light.png";
+      }
     }
   };
 
